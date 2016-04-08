@@ -1,0 +1,44 @@
+% uplatex 専用
+
+% フォント周りの設定
+\usepackage[T1]{fontenc}	% 8bitフォント
+\usepackage{textcomp}	% 8bitフォント
+\usepackage[utf8]{inputenc}	% UTF-8固定 ウムラウトなど普通に打ってよい
+\usepackage[sc]{mathpazo}	% 本文と数式の欧文をPalatinoに
+\usepackage[scaled]{helvet}	% 見出し英数字をHelveticaに
+\renewcommand{\ttdefault}{lmtt} 	% 等幅フォントをlmttに
+
+% よく使うマクロ
+\usepackage{okumacro}	% 奥村先生のマクロ
+\usepackage[uplatex,bold]{otf}	% 機種依存文字pkg
+\usepackage{otf-up-yu-elcapitan}	% El Capitan で游書体
+\usepackage{ulinej}	% 改行可能な下線
+% \usepackage[at]{easylist}	% listを簡単に @で\item
+% \usepackage{natbib}
+	% \citet{}:姓（年）
+	% \citep{}:paren
+% \bibliographystyle{jecon}	% 日本語参考文献向け \bibliographystyle
+
+% 独自書式・コマンド
+\renewcommand\thefootnote{\arabic{footnote})}	% 脚注様式を1)に
+% \renewcommand{\labelitemi}{・}	% 箇条書き記号を中黒に
+\renewcommand{\labelenumi}{(\arabic{enumi})}	% enumerate (1), (2), (3),...
+\newcommand{\note}[1]{\footnote{\propshape #1}}	% プロポーショナルフォントによる脚注コマンド\note
+\newcommand{\margin}[1]{\marginpar{\gtfamily\scriptsize #1}}	% 校正用の傍注コマンド\margin
+\setcounter{tocdepth}{4}	% 目次の階層を \subsubsection まで拡張
+\usepackage{tocloft}	% 目次のページ番号フォントをゴシックに
+	\renewcommand{\cftsubsecpagefont}{\sffamily}  
+	\renewcommand{\cftsubsubsecpagefont}{\sffamily}
+% \paragraphの■を消す
+\makeatletter
+\if@twocolumn
+	\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+	{\z@}{-1zw}%
+	{\normalfont\normalsize\headfont\bold}}
+\else
+	\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+	{0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+	{-1zw}%
+	{\normalfont\normalsize\headfont\bold}}
+\fi
+\makeatother

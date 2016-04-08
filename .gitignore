@@ -178,4 +178,5 @@ TSWLatexianTemp*
 # KBibTeX
 *~[0-9]*
 
-
+# additional packages especially for this repo
+ulinj101/
